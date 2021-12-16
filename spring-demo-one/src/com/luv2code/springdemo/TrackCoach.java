@@ -1,8 +1,11 @@
 package com.luv2code.springdemo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TrackCoach implements Coach {
 
-	private FortuneService fortuneService;
+	private HappyFortuneService fortuneService;
 	private String emailAddress, team;
 	public String getEmailAddress() {
 		return emailAddress;
@@ -32,7 +35,7 @@ public class TrackCoach implements Coach {
 		return fortuneService.getFortune();
 	}
 
-	public TrackCoach(FortuneService fortuneService) {
+	public TrackCoach(HappyFortuneService fortuneService) {
 		super();
 		this.fortuneService = fortuneService;
 	}
