@@ -1,12 +1,23 @@
 package com.luv2code.springdemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TrackCoach implements Coach {
 
-	private HappyFortuneService fortuneService;
+	private FortuneService fortuneService;
 	private String emailAddress, team;
+	
+	
+	
+	@Autowired
+	@Qualifier("RESTFortuneService")
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -35,10 +46,6 @@ public class TrackCoach implements Coach {
 		return fortuneService.getFortune();
 	}
 
-	public TrackCoach(HappyFortuneService fortuneService) {
-		super();
-		this.fortuneService = fortuneService;
-	}
 
 	public FortuneService getFortuneService() {
 		return fortuneService;
